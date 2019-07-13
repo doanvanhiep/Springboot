@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>KanbanBoardOnline</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/font.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/structure.css">
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<header id="header">
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home"><span>Kanban</span>Board</a></div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav ">
+                        <li class=""><a href="/home">Trang chủ</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav ">
+                <li><a href="#" style="color:red ;font-size:18px " th:text="${User}"></a></li>
+                <li><a href="#"  style="color:red ;font-size:18px">Đăng xuất</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+
+</header>
+<section id="contentbody">
+    <div class="container">
+
+
+<!--        <a href="/home/kanban/create">Thêm User</a>-->
+
+
+        <form action="#" th:action="@{/home/kanban/save}"  >
+            <div>
+                <h1 >Vui lòng nhập tên User</h1>
+            </div>
+            <div >
+                <label>User Name</label>
+                <input type="text" th:name="username" th:value="${username}" />
+            </div>
+
+            <button type="submit">Save</button>
+        </form>
+
+
+        <h1>Danh sách các backlog</h1>
+       <p>Thêm Backlog</p>
+
+        <ul th:each="contact,iterStat : ${item}">
+            <li style="font-size: 25px "  th:if="${contact.state}=='Backlog'">
+                <span th:text="${contact.content}"></span>
+                <a th:href="@{/home/{id}/kanban/chageStateToDo/{id1}(id=${contact.repository1.id},id1=${contact.id})}" > Move ToDo</a>
+            </li>
+        </ul>
+
+        <h1>Danh sách các Todo</h1>
+        <ul th:each="contact,iterStat : ${item}">
+            <li style="font-size: 25px "  th:if="${contact.state}=='ToDo'">
+                <span th:text="${contact.content}"></span>
+                <a th:href="@{/home/{id}/kanban/chageStateDoing/{id1}(id=${contact.repository1.id},id1=${contact.id})}" > Move Doing</a>
+            </li>
+        </ul>
+
+        <h1>Danh sách các Doing</h1>
+        <ul th:each="contact,iterStat : ${item}">
+            <li style="font-size: 25px "  th:if="${contact.state}=='Doing'">
+                <span th:text="${contact.content}"></span>
+                <a th:href="@{/home/{id}/kanban/chageStateTest/{id1}(id=${contact.repository1.id},id1=${contact.id})}" > Move Test</a>
+            </li>
+        </ul>
+        <h1>Danh sách các Test</h1>
+        <ul th:each="contact,iterStat : ${item}">
+            <li style="font-size: 25px "  th:if="${contact.state}=='Test'">
+                <span th:text="${contact.content}"></span>
+                <a th:href="@{/home/{id}/kanban/chageStateDone/{id1}(id=${contact.repository1.id},id1=${contact.id})}" > Move Done</a>
+            </li>
+        </ul>
+        <h1>Danh sách các Done</h1>
+        <ul th:each="contact,iterStat : ${item}">
+            <li style="font-size: 25px "  th:if="${contact.state}=='Done'">
+                <span th:text="${contact.content}"></span>
+            </li>
+        </ul>
+    </div>
+    </div>
+</section>
+
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/wow.min.js"></script>
+<script src="/assets/js/custom.js"></script>
+</body>
+</html>

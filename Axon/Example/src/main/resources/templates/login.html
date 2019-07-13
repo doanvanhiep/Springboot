@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>KanbanBoardOnline</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../assets/css/font.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/structure.css">
+    <!--[if lt IE 9]>
+    <script src="assets/js/html5shiv.min.js"></script>
+    <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
+<header id="header">
+    <div class="container">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                            aria-expanded="false" aria-controls="navbar"><span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home"><span>Kanban</span>Board</a></div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav ">
+                        <li class=""><a href="/home">Trang chủ</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+
+
+    </div>
+
+
+</header>
+<section id="contentbody">
+    <div class="container">
+
+        <div class="col-3"></div>
+        <div class="container col-6">
+            <div align="center" >
+                <div class="w3-container w3-blue">
+                    <h2>Online KanBan Board</h2>
+                </div>
+                <form style="height:100px; width:500px;"  action="/save" method="post" class="w3-container">
+                    <p>
+                        <label>User name</label>
+                        <input  id="username" name="username" class="w3-input" type="text"></p>
+                    <p>
+                        <label>Password</label>
+                        <input id="password" name="password" class="w3-input" type="password"></p>
+
+                    <button class="button" type="submit" onclick="validatePassword()">Login</button>
+                    </br>
+                    <a href="/" >Register</a>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+    </div>
+</section>
+
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/wow.min.js"></script>
+<script src="../assets/js/custom.js"></script>
+</body>
+</html>
+
+<SCRIPT LANGUAGE="JavaScript">
+    function validatePassword() {
+        var password = document.getElementById("password").value,
+            username= document.getElementById("username").value;
+        if (username == ""){
+            alert('Please input user name');
+        }
+        else
+        if (password == "")
+        {
+            alert('Please input password');
+        }
+        return false;
+
+    }
+    // End -->
+</script>
